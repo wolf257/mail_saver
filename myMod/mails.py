@@ -15,6 +15,13 @@ def list_all_uids(imapObj): #WORKS_TO_KEEP
 
     return UIDs
 
+def print_all_folders(imapObj): #WORKS_TO_KEEP
+    """ LIST FOLDER IN SERVER AND RETURN IT AS A LIST """
+    list = imapObj.list_folders()
+    pprint.pprint(list)
+
+    return list
+
 def list_all_folders(imapObj): #WORKS_TO_KEEP
     """ LIST FOLDER IN SERVER AND RETURN IT AS A LIST """
     list = imapObj.list_folders()
