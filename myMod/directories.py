@@ -18,7 +18,7 @@ def create_directories(imapObj): #WORKS_TO_KEEP
         if line[2] == '[Gmail]/Corbeille' :
             continue
 
-        os.makedirs(time.strftime("%Y%m%d")+'/'+line[2])
+        os.makedirs(time.strftime("%Y%m%d")+'_sauvegarde'+'/'+line[2])
         print("--- Le dossier : ", line[2] , " a été créé. ---")
 
     print("-------------- OPERATION 'CREATION DOSSIERS' TERMINÉE --------------")

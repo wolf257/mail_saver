@@ -14,13 +14,14 @@ def select_servers(pseudo) :
         server = IMAPServers['gmail']
     elif pseudo.endswith('yahoo.com') :
         server = IMAPServers['yahoo']
-    elif pseudo.endswith('outlook.com') :
+    elif pseudo.endswith('outlook.com') or pseudo.endswith('outlook.fr') or pseudo.endswith('hotmail.com') or pseudo.endswith('hotmail.fr') :
         server = IMAPServers['outlook']
-    elif pseudo.endswith('hotmail.com') :
-        server = IMAPServers['hotmail']
+    #elif pseudo.endswith('hotmail.com') or pseudo.endswith('hotmail.fr') :
+    #    server = IMAPServers['hotmail']
     else :
         print("Désolé, je ne peux pas encore traiter votre boîte.")
-
+        quit()
+        
     return server
 
 #----------------------------------------------------
