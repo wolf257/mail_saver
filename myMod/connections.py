@@ -12,7 +12,7 @@ IMAPServers = {'gmail' : 'imap.gmail.com', 'yahoo' : 'imap.mail.yahoo.com',
 def select_servers(pseudo) :
     if pseudo.endswith('gmail.com') :
         server = IMAPServers['gmail']
-    elif pseudo.endswith('yahoo.com') :
+    elif pseudo.endswith('yahoo.com') or pseudo.endswith('yahoo.fr') :
         server = IMAPServers['yahoo']
     elif pseudo.endswith('outlook.com') or pseudo.endswith('outlook.fr') or pseudo.endswith('hotmail.com') or pseudo.endswith('hotmail.fr') :
         server = IMAPServers['outlook']
@@ -21,7 +21,7 @@ def select_servers(pseudo) :
     else :
         print("Désolé, je ne peux pas encore traiter votre boîte.")
         quit()
-        
+
     return server
 
 #----------------------------------------------------
@@ -32,14 +32,18 @@ def connect(): #WORKS
 
     password = getpass.getpass("Enter your password: ")
 
-    imapObj = imapclient.IMAPClient(server, ssl=True)
-    imapObj.login(nom, password)
+    try:
+        imapObj = imapclient.IMAPClient(server, ssl=True)
+        imapObj.login(nom, password)
+    except :
+        print("The connection did not work.")
+        quit()
+    else :
+        print("-----------------------------------")
+        print("Connexion reussie")
+        print("-----------------------------------")
 
-    print("-----------------------------------")
-    print("Connexion reussie")
-    print("-----------------------------------")
-
-    return imapObj
+        return imapObj
 
 #----------------------------------------------------
 def disconnect(obj): #WORKS
