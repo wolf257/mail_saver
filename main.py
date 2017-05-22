@@ -13,9 +13,10 @@ from myMod.mails import *
 
 imapObj = connect()
 
-#create_directories(imapObj)
+#print_all_folders(imapObj)
 
-#UIDs =
+create_directories(imapObj)
+
 #basic_process(imapObj)
 
 #get_raw_messages(imapObj, UIDs)
