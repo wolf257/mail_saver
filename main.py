@@ -8,7 +8,6 @@
 
 from myMod.connections import *
 from myMod.directories import *
-from myMod.positions import *
 from myMod.mails import *
 
 imapObj = connect()
