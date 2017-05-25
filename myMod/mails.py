@@ -7,39 +7,37 @@ import imapclient, pyzmail, pprint, os, time
 #	TESTED
 #-----------------------------
 
-def list_all_uids(imapObj): #WORKS_TO_KEEP
-    """ GIVE US ALL UIDS"""
-    UIDs = imapObj.search()
-
-    print("Il y a " , len(UIDs) , " messages dans le dossier") #, line[2], ".")
-
-    return UIDs
-
 def print_all_folders(imapObj): #WORKS_TO_KEEP
-    """ LIST FOLDER IN SERVER AND RETURN IT AS A LIST """
-    list = imapObj.list_folders()
-    pprint.pprint(list)
+    """ Print folders in server No return. """
+    myFolders = imapObj.list_folders()
+    pprint.pprint(myFolders)
 
-    return list
+def get_all_folders(imapObj): #WORKS_TO_KEEP
+    """ List folders in server and return them as a list """
+    myFolders = imapObj.list_folders()
 
-def list_all_folders(imapObj): #WORKS_TO_KEEP
-    """ LIST FOLDER IN SERVER AND RETURN IT AS A LIST """
-    list = imapObj.list_folders()
-    #pprint.pprint(list)
+    return myFolders
 
-    return list
+def get_all_uids(imapObj): #WORKS_TO_KEEP
+    """ List all uids and return them as list """
+    myUIDs = imapObj.search()
 
-def list_messages(imapObj, line, UIDs) : #WORKS_TO_KEEP
+    print("Il y a " , len(myUIDs) , " messages dans le dossier.") #, line[2], ".")
 
-    print("-------------- ACQUISITION DES MESSAGES DU DOSSIER " , line[2] , " --------------")
+    return myUIDs
+
+def get_messages(imapObj, folder, myUIDs) : #WORKS_TO_KEEP
+
+    print("-------------- ACQUISITION DES MESSAGES DU DOSSIER " , folder[2] , " --------------")
 
     i = 1
     rawMessages = {}
 
-    for uid in UIDs :
+    for uid in myUIDs :
         try :
             rawMessages[i] = imapObj.fetch([uid], ['BODY[]', 'FLAGS'])
-            print("C'est bon pour le messages ", i, "de la boite : ", line[2])
+            print("C'est bon pour le messages ", i, "de la boite : ", folder[2])
+            #TEST :
             #pprint.pprint(rawMessages[i])
 
             message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
@@ -50,48 +48,22 @@ def list_messages(imapObj, line, UIDs) : #WORKS_TO_KEEP
             print("On a un probleme sur le mail ", i)
 
         finally :
+            #TEST :
             #print("Test réussie")
             i += 1
 
 def basic_process(imapObj):
-    """ ENTER IN ALL DIRECTORIES, GET ALL MESSAGES """
+    """ Entre in each directory, get all his message """
 
     print("-------------- ACQUISITION DES UIDs --------------")
+    myFolders = get_all_folders(imapObj)
 
-    list = list_all_folders(imapObj)
-
-    for line in list : ## line[2] sera un nom de dossier
+    for folder in myFolders : ## folder[2] sera un nom de dossier
         try :
-            imapObj.select_folder(line[2], readonly=True)
+            imapObj.select_folder(folder[2], readonly=True)
         except :
-            print("On a un probleme.")
+            print("On a un probleme sur le dossier : ", folder[2], ".")
         else :
-            UIDs = list_all_uids(imapObj)
+            myUIDs = get_all_uids(imapObj)
 
-            list_messages(imapObj, line, UIDs)
-
-
-
-
-
-
-#-----------------------------
-#	Not TESTED yet / Not NEEDED anymore
-#-----------------------------
-
-
-def get_raw_messages(imapObj, list_uids):
-    """ """
-    #print("-------------- ACQUISITION DES MESSAGES --------------")
-
-    #rawMessages = {}
-    for uid in list_uids :
-        print(uid , end = '***')
-        #rawMessages[uid] = imapObj.fetch([uid], ['BODY[]', 'FLAGS'])
-            #rawMessages = imapObj.fetch([uid], ['BODY[]', 'FLAGS'])
-
-
-    #for message in rawMessages :
-        #pprint.pprint(message)
-
-    #return rawMessages #dict_raws plus loin
+            get_messages(imapObj, folder, myUIDs)
