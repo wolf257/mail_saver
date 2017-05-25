@@ -9,9 +9,12 @@ import imapclient, pyzmail, pprint, os, time
 
 
 def create_directories(imapObj): #WORKS_TO_KEEP
+    #Commentaire : Si le dossier existe déjà, il y error.
+    #TODO : Trouver solutions
+
     """ CREATES ALL THE DIRECTORIES existing IN the SERVERS """
 
-    list = imapObj.list_folders()
+    myFolders = imapObj.list_folders()
 
     #TODO : Create folder save_date,
         # Put your self in it,
@@ -25,12 +28,12 @@ def create_directories(imapObj): #WORKS_TO_KEEP
 
     print("-------------- CREATION SUR VOTRE MACHINE DES DOSSIERS --------------")
 
-    for line in list :
-        if line[2] == '[Gmail]/Corbeille' :
+    for folder in myFolders :
+        if folder[2] == '[Gmail]/Corbeille' :
             continue
 
-        os.makedirs(time.strftime("%Y%m%d")+'_sauvegarde'+'/'+line[2])
-        print("--- Le dossier : ", line[2] , " a été créé. ---")
+        os.makedirs(time.strftime("%Y%m%d")+'_sauvegarde'+'/'+folder[2])
+        print("--- Le dossier : ", folder[2] , " a été créé. ---")
 
     print("-------------- OPERATION 'CREATION DOSSIERS' TERMINÉE --------------")
 
