@@ -7,6 +7,8 @@ import imapclient, pyzmail, pprint, os, time
 #	TESTED
 #-----------------------------
 
+#TODO : Encapsuler en créant un objet
+
 def print_all_folders(imapObj): #WORKS_TO_KEEP
     """ Print folders in server No return. """
     myFolders = imapObj.list_folders()
@@ -42,7 +44,7 @@ def get_messages(imapObj, folder, myUIDs) : #WORKS_TO_KEEP
 
             message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
             # TEST :
-            # print("     Il a pour sujet : ", message.get_subject())
+            # print(" Il a pour sujet : ", message.get_subject())
 
         except :
             print("On a un probleme sur le mail ", i)
