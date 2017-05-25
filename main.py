@@ -14,7 +14,7 @@ imapObj = connect()
 
 #print_all_folders(imapObj)
 
-create_directories(imapObj)
+#create_directories(imapObj)
 
 #basic_process(imapObj)
 
