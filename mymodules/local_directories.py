@@ -3,10 +3,6 @@
 
 import imapclient, pyzmail, pprint, os, time
 
-#-----------------------------
-#	TESTED
-#-----------------------------
-
 
 def create_directories(imapObj): #WORKS_TO_KEEP
     #Commentaire : Si le dossier existe déjà, il y error.
@@ -36,12 +32,3 @@ def create_directories(imapObj): #WORKS_TO_KEEP
         print("--- Le dossier : ", folder[2] , " a été créé. ---")
 
     print("-------------- OPERATION 'CREATION DOSSIERS' TERMINÉE --------------")
-
-
-
-
-
-
-#---------------------------------------
-#	Not TESTED yet / Not NEEDED anymore
-#---------------------------------------

@@ -1,13 +1,14 @@
-import imapclient, pyzmail, pprint, os, time
-from ./mails.py import *
+#!usr/bin/python3
+#-*- coding : utf8 -*-
 
-class message(object):
-    """docstring for message."""
+import imapclient, pyzmail, pprint, os, time
 
 
 def create_message_file() :
      #create file with right name
+     pass
 
 def write_message() :
     #open file with right name
     #write
+    pass

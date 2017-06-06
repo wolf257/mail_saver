@@ -6,11 +6,14 @@
 # MAIN PART
 #-------------------
 
-from myMod.connections import *
-from myMod.directories import *
-from myMod.mails import *
+import mymodules.connections as myconnections
+import mymodules.mails as mymails
+import mymodules.local_directories as mylocaldirectories
+import mymodules.server_directories as myserverdirectories
+import mymodules. local_messages as mylocalmessages
+import mymodules.server_messages as myservermessages
 
-imapObj = connect()
+imapObj = myconnections.connect()
 
 #print_all_folders(imapObj)
 
@@ -20,4 +23,4 @@ imapObj = connect()
 
 #get_raw_messages(imapObj, UIDs)
 
-disconnect(imapObj)
+myconnections.disconnect(imapObj)
