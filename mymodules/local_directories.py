@@ -25,7 +25,7 @@ def create_directories(imapObj): #WORKS_TO_KEEP
     print("-------------- CREATION SUR VOTRE MACHINE DES DOSSIERS --------------")
 
     for folder in myFolders :
-        if folder[2] == '[Gmail]/Corbeille' :
+        if folder[2] == '[Gmail]/Corbeille' or folder[2] == '[Gmail]/Spam' :
             continue
 
         os.makedirs(time.strftime("%Y%m%d")+'_sauvegarde'+'/'+folder[2])
