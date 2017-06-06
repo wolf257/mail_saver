@@ -1,7 +1,11 @@
 #!usr/bin/python3
 #-*- coding : utf8 -*-
 
-import imapclient, pyzmail, pprint, os, time
+import imapclient
+import pyzmail
+import pprint
+import os
+import time
 
 def get_all_uids(imapObj, folder): #WORKS_TO_KEEP
     """ List all uids and return them as list """
@@ -13,7 +17,7 @@ def get_all_uids(imapObj, folder): #WORKS_TO_KEEP
 
 def messages_get_topic(rawMessages, i, uid):
     """ Test function : get and print topic of message """
-    
+
     message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
 
     sujet = message.get_subject()

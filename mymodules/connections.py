@@ -1,8 +1,12 @@
 #!usr/bin/python3
 #-*- coding : utf8 -*-
 
-import imapclient, pyzmail, pprint, os, time, getpass
-
+import imapclient
+import pyzmail
+import pprint
+import os
+import time
+import getpass
 
 IMAPServers = {'gmail' : 'imap.gmail.com', 'yahoo' : 'imap.mail.yahoo.com',
 'outlook' : 'imap-mail.outlook.com', 'hotmail' : 'imap-mail.outlook.com', }

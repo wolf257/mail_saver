@@ -1,8 +1,11 @@
 #!usr/bin/python3
 #-*- coding : utf8 -*-
 
-import imapclient, pyzmail, pprint, os, time
-
+import imapclient
+import pyzmail
+import pprint
+import os
+import time
 #-----------------------------
 #	TESTED
 #-----------------------------
