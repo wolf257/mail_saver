@@ -31,4 +31,7 @@ def basic_process(imapObj):
         else :
             myUIDs = myserver_messages.get_all_uids(imapObj, folder)
 
-            myserver_messages.get_messages(imapObj, folder, myUIDs)
+            if len(myUIDs) > 0 :
+                myserver_messages.get_messages(imapObj, folder, myUIDs)
+            else :
+                print("Le dossier est vide.")
