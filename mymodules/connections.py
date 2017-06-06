@@ -12,8 +12,6 @@ IMAPServers = {'gmail' : 'imap.gmail.com', 'yahoo' : 'imap.mail.yahoo.com',
 def select_servers(identifiant) : #WORKS
     """ Select the right server according to the ending of the mail """
 
-    # TODO : cut the spaces before and After
-
     if identifiant.endswith('gmail.com') :
         server = IMAPServers['gmail']
     elif identifiant.endswith('yahoo.com') or identifiant.endswith('yahoo.fr') :
@@ -29,6 +27,7 @@ def select_servers(identifiant) : #WORKS
 #----------------------------------------------------
 def connect(): #WORKS
     """ Connection to the imap-server """
+
     identifiant = input("Quelle est votre adresse mail ? ").strip()
     server = select_servers(identifiant)
 
