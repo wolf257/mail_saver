@@ -2,15 +2,21 @@
 #-*- coding : utf8 -*-
 
 import imapclient, pyzmail, pprint, os, time
-#from mails.py import *
 
-def get_all_uids(imapObj): #WORKS_TO_KEEP
+def get_all_uids(imapObj, folder): #WORKS_TO_KEEP
     """ List all uids and return them as list """
     myUIDs = imapObj.search()
 
-    print("Il y a " , len(myUIDs) , " messages dans le dossier.") #, line[2], ".")
+    print("\n\nIl y a " , len(myUIDs) , " messages dans le dossier ", folder[2], ".") #, line[2], ".")
 
     return myUIDs
+
+def messages_get_topic(rawMessages, i, uid):
+    message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
+
+    sujet = message.get_subject()
+
+    print(" Il a pour sujet : ", sujet)
 
 def get_messages(imapObj, folder, myUIDs) : #WORKS_TO_KEEP
 
@@ -19,16 +25,19 @@ def get_messages(imapObj, folder, myUIDs) : #WORKS_TO_KEEP
     i = 1
     rawMessages = {}
 
-    for uid in myUIDs :
+    for uid in range(1,3,1) : #myUIDs :
         try :
             rawMessages[i] = imapObj.fetch([uid], ['BODY[]', 'FLAGS'])
             print("C'est bon pour le messages ", i, "de la boite : ", folder[2])
             #TEST :
             #pprint.pprint(rawMessages[i])
 
-            message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
+            #TEST :
+            messages_get_topic(rawMessages, i, uid)
+
+            #message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
             # TEST :
-            # print(" Il a pour sujet : ", message.get_subject())
+            #print(" Il a pour sujet : ", message.get_subject())
 
         except :
             print("On a un probleme sur le mail ", i)
@@ -37,6 +46,33 @@ def get_messages(imapObj, folder, myUIDs) : #WORKS_TO_KEEP
             #TEST :
             #print("Test réussie")
             i += 1
+
+    '''
+    for uid in myUIDs :
+        try :
+            rawMessages[i] = imapObj.fetch([uid], ['BODY[]', 'FLAGS'])
+            print("C'est bon pour le messages ", i, "de la boite : ", folder[2])
+            #TEST :
+            #pprint.pprint(rawMessages[i])
+
+            #messages_topic(i, uid)
+            #message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
+            # TEST :
+            #print(" Il a pour sujet : ", message.get_subject())
+
+        except :
+            print("On a un probleme sur le mail ", i)
+
+        finally :
+            #TEST :
+            #print("Test réussie")
+            i += 1
+    '''
+
+def traitement_messages(arg):
+    pass
+
+
 
 #class message(object):
 #    """docstring for message."""
