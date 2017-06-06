@@ -15,9 +15,9 @@ import mymodules.server_messages as myservermessages
 
 imapObj = myconnections.connect()
 
-#print_all_folders(imapObj)
+#myserverdirectories.print_all_folders(imapObj)
 
-#create_directories(imapObj)
+#mylocaldirectories.create_directories(imapObj)
 
 #basic_process(imapObj)
 
