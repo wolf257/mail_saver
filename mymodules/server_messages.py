@@ -12,6 +12,8 @@ def get_all_uids(imapObj, folder): #WORKS_TO_KEEP
     return myUIDs
 
 def messages_get_topic(rawMessages, i, uid):
+    """ Test function : get and print topic of message """
+    
     message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
 
     sujet = message.get_subject()
@@ -19,6 +21,8 @@ def messages_get_topic(rawMessages, i, uid):
     print("Il a pour sujet : ", sujet)
 
 def messages_get_generals(rawMessages, i, uid):
+    """ Get and print generalities about the message (from, subject, to) """
+
     message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
 
     expediteur = message.get_address('from')
