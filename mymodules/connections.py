@@ -29,7 +29,7 @@ def select_servers(identifiant) : #WORKS
 #----------------------------------------------------
 def connect(): #WORKS
     """ Connection to the imap-server """
-    identifiant = input("Quelle est votre adresse mail ? ")
+    identifiant = input("Quelle est votre adresse mail ? ").strip()
     server = select_servers(identifiant)
 
     password = getpass.getpass("Enter your password: ")
