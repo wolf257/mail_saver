@@ -2,7 +2,15 @@
 #-*- coding : utf8 -*-
 
 import imapclient, pyzmail, pprint, os, time
-#import folders, messages
+
+import mymodules.connections as myconnections
+
+import mymodules.local_directories as mylocal_directories
+import mymodules.server_directories as myserver_directories
+
+import mymodules. local_messages as mylocal_messages
+import mymodules.server_messages as myserver_messages
+
 #-----------------------------
 #	TESTED
 #-----------------------------
@@ -13,7 +21,7 @@ def basic_process(imapObj):
     """ Entre in each directory, get all his message """
 
     print("-------------- ACQUISITION DES UIDs --------------")
-    myFolders = get_all_folders(imapObj)
+    myFolders = myserver_directories.get_all_folders(imapObj)
 
     for folder in myFolders : ## folder[2] sera un nom de dossier
         try :
@@ -21,6 +29,6 @@ def basic_process(imapObj):
         except :
             print("On a un probleme sur le dossier : ", folder[2], ".")
         else :
-            myUIDs = get_all_uids(imapObj)
+            myUIDs = myserver_messages.get_all_uids(imapObj, folder)
 
-            get_messages(imapObj, folder, myUIDs)
+            myserver_messages.get_messages(imapObj, folder, myUIDs)
