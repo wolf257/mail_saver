@@ -8,19 +8,17 @@
 
 import mymodules.connections as myconnections
 import mymodules.mails as mymails
-import mymodules.local_directories as mylocaldirectories
-import mymodules.server_directories as myserverdirectories
-import mymodules. local_messages as mylocalmessages
-import mymodules.server_messages as myservermessages
+import mymodules.local_directories as mylocal_directories
+import mymodules.server_directories as myserver_directories
+import mymodules. local_messages as mylocal_messages
+import mymodules.server_messages as myserver_messages
 
 imapObj = myconnections.connect()
 
-#myserverdirectories.print_all_folders(imapObj)
+#myserver_directories.print_all_folders(imapObj)
 
-#mylocaldirectories.create_directories(imapObj)
+#mylocal_directories.create_directories(imapObj)
 
-#basic_process(imapObj)
-
-#get_raw_messages(imapObj, UIDs)
+#mymails.basic_process(imapObj)
 
 myconnections.disconnect(imapObj)

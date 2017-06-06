@@ -16,7 +16,19 @@ def messages_get_topic(rawMessages, i, uid):
 
     sujet = message.get_subject()
 
-    print(" Il a pour sujet : ", sujet)
+    print("Il a pour sujet : ", sujet)
+
+def messages_get_generals(rawMessages, i, uid):
+    message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
+
+    expediteur = message.get_address('from')
+    sujet = message.get_subject()
+    destinataire = message.get_addresses('to')
+
+    print("Il a pour sujet : ", sujet)
+    print("Il a pour expediteur : ", expediteur[1])
+    if destinataire != 0 :
+        print("et il est destiné à : ", destinataire)
 
 def get_messages(imapObj, folder, myUIDs) : #WORKS_TO_KEEP
 
@@ -28,7 +40,7 @@ def get_messages(imapObj, folder, myUIDs) : #WORKS_TO_KEEP
     for uid in range(1,3,1) : #myUIDs :
         try :
             rawMessages[i] = imapObj.fetch([uid], ['BODY[]', 'FLAGS'])
-            print("C'est bon pour le messages ", i, "de la boite : ", folder[2])
+            print("\nC'est bon pour le messages ", i, "de la boite : ", folder[2])
             #TEST :
             #pprint.pprint(rawMessages[i])
 
