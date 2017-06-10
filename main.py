@@ -37,7 +37,7 @@ while 1 :
         # 2nd choice
         #========================
 
-        b = input("How do you want me to work ? " + \
+        b = input("What do you want me to do ? " + \
             "\n a - Basic process" + \
             "\n b - Create directories"+
             "\nYour choice : ")
@@ -54,14 +54,20 @@ while 1 :
 
     #==================================
     elif a.strip() == '2' :
-        print("Go see the GUI")
+        print("Go see the GUI. Talk to you later")
         interface.interface_tk()
             # Note : program won't resume until you close the GUI
 
     #==================================
     elif a.strip() == '' :
+        print("+++++++++++++++++++++++++++++")
+        print("Thank you ! Bye.")
+        print("+++++++++++++++++++++++++++++")
+
         break
 
     #==================================
     else :
-        print("I dont know what to do. (restart)")
+        print("\n-----------------------------------")
+        print("I dont know what to do. (I restart)")
+        print("-----------------------------------")
