@@ -6,6 +6,9 @@ import pyzmail
 import pprint
 import os
 import time
+
+import mymodules.server_messages as myserver_messages
+
 #-----------------------------
 #	TESTED
 #-----------------------------
