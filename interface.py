@@ -4,8 +4,8 @@
 import tkinter
 
 class interface_tk(tkinter.Tk):
-    def __init__(self,parent):
-        tkinter.Tk.__init__(self,parent)
+    def __init__(self, parent):
+        tkinter.Tk.__init__(self, parent)
 
         self.parent = parent
 
