@@ -13,7 +13,7 @@ import mymodules.server_directories as myserver_directories
 import mymodules.local_messages as mylocal_messages
 import mymodules.server_messages as myserver_messages
 
-import interface
+import interface.imain as interface
 
 
 while 1 :
@@ -54,7 +54,7 @@ while 1 :
 
     #==================================
     elif a.strip() == '2' :
-        print("Go see the GUI. Talk to you later")
+        print("Go see the GUI. Talk to you later.")
         interface.interface_tk()
             # Note : program won't resume until you close the GUI
 
@@ -69,5 +69,5 @@ while 1 :
     #==================================
     else :
         print("\n-----------------------------------")
-        print("I dont know what to do. (I restart)")
+        print("I dont know what to do. (I restart).")
         print("-----------------------------------")

@@ -88,6 +88,7 @@ class interface_tk(object):
         #------------------------------
 
         self.frame_connexion.grid_columnconfigure(0, weight=1)
+        self.frame_connexion.grid_rowconfigure(0, weight=1)
 
         #------------------------------
         # TEST (row 4)
