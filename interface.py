@@ -3,44 +3,47 @@
 
 import tkinter
 
-class interface_tk(tkinter.Tk):
-    def __init__(self, parent):
-        tkinter.Tk.__init__(self, parent)
-
-        self.parent = parent
+class interface_tk(object):
+    def __init__(self):
+        self.root = tkinter.Tk()
+        self.root.title("Mail saver")
 
         self.initialize()
 
+        self.root.resizable(True, False)
+        self.root.update()
+        self.root.geometry(self.root.geometry())
+
+        self.root.mainloop()
+
     def initialize(self):
-        self.grid()
+        #------------------------------
+        # Frame
+        #------------------------------
 
-    #------------------------------
-    # BLOC 1
-    #------------------------------
-
-        frame_connexion = tkinter.Frame(self, bd='8', bg='yellow', \
-        highlightthickness='10', highlightcolor='blue')
-        frame_connexion.grid()
+        self.frame_connexion = tkinter.Frame(self.root, bd='8', bg='yellow', \
+            highlightthickness='10', highlightcolor='blue')
+        self.frame_connexion.grid()
 
         #------------------------------
         # FIRST LINE (row 0)
         #------------------------------
 
-        label_invit = tkinter.Label(frame_connexion, text="Veuillez entrer vos informations",
-        anchor="center", font=('Courrier New', '18', 'bold underline'))
-        label_invit.grid(row=0, column=0,columnspan=4,sticky='EW')
+        self.label_invit = tkinter.Label(self.frame_connexion, text="Veuillez entrer vos informations", \
+               anchor="center", font=('Courrier New', '18', 'bold underline'))
+        self.label_invit.grid(row=0, column=0,columnspan=4,sticky='EW')
 
         #------------------------------
         # Email (row 1)
         #------------------------------
 
-        label_pseudo = tkinter.Label(frame_connexion, text="Adresse mail : ", anchor="center")
-        label_pseudo.grid(row=1, column=0,columnspan=2,sticky='EW')
+        self.label_pseudo = tkinter.Label(self.frame_connexion, text="Adresse mail : ", anchor="center")
+        self.label_pseudo.grid(row=1, column=0,columnspan=2,sticky='EW')
 
         self.pseudo = tkinter.StringVar()
         self.pseudo.set(u'example@exemple.com')
 
-        self.entry_pseudo = tkinter.Entry(frame_connexion, textvariable=self.pseudo)
+        self.entry_pseudo = tkinter.Entry(self.frame_connexion, textvariable=self.pseudo)
         self.entry_pseudo.grid(column=2,row=1,columnspan=2,sticky='EW')
         #self.entry_pseudo.bind("<Return>", self.PressEnter)
 
@@ -51,13 +54,13 @@ class interface_tk(tkinter.Tk):
         # Password (row 2)
         #------------------------------
 
-        label_pass = tkinter.Label(frame_connexion, text="Mot de passe : ", anchor="center")
-        label_pass.grid(row=2, column=0, columnspan=2,sticky='EW')
+        self.label_pass = tkinter.Label(self.frame_connexion, text="Mot de passe : ", anchor="center")
+        self.label_pass.grid(row=2, column=0, columnspan=2, sticky='EW')
 
         self.password = tkinter.StringVar()
         self.password.set(u"password")
 
-        self.entry_password = tkinter.Entry(frame_connexion, textvariable=self.password, show='*')
+        self.entry_password = tkinter.Entry(self.frame_connexion, textvariable=self.password, show='*')
         self.entry_password.grid(column=2,row=2, columnspan=2, sticky='EW')
         #self.entry_pseudo.bind("<Return>", self.PressEnter)
 
@@ -65,37 +68,36 @@ class interface_tk(tkinter.Tk):
         self.entry_password.selection_range(0, tkinter.END)
 
         #------------------------------
-        # PARTIE BUTTON (row 3)
+        # BUTTON <Connexion> (row 3)
         #------------------------------
 
-        button_connexion = tkinter.Button(frame_connexion,text=u"Connexion") # , command=self.ButtonClick)
-        button_connexion.grid(row=3, column=3)
+        self.button_connexion = tkinter.Button(self.frame_connexion,text=u"Connexion", \
+            command=self.showmyId)
+        self.button_connexion.grid(row=3, column=3)
+
+        #==============> TEST
+        self.myId = tkinter.StringVar()
+        self.label_show = tkinter.Label(self.frame_connexion, textvariable=self.myId, \
+               anchor="center",) #font=('Courrier New', '16', 'bold underline'))
+        self.label_show.grid(row=4, column=0,columnspan=4,sticky='EW')
+        self.myId.set('Click on Connexion to change me !')
+        #==============>
 
         #------------------------------
         # RESIZING
         #------------------------------
 
-        self.grid_columnconfigure(0, weight=1)
-        self.resizable(True, False)
-        self.update()
-        self.geometry(self.geometry())
-
+        self.frame_connexion.grid_columnconfigure(0, weight=1)
 
         #------------------------------
-        # Essai (row 4)
+        # TEST (row 4)
         #------------------------------
 
-    #def ButtonClick(self):
-    #    self.labelVariable.set( self.entryVariable.get()+" (You clicked the button)" )
-    #    self.entry.focus_set()
-    #    self.entry.selection_range(0, tkinter.END)
-
-    #def PressEnter(self, event):
-    #    self.labelVariable.set( self.entryVariable.get()+" (You pressed ENTER)" )
-    #   self.entry.focus_set()
-    #    self.entry.selection_range(0, tkinter.END)
+    def showmyId(self):
+        self.myId.set('Your email is : ' + self.pseudo.get() + "\nThat\'s the only thing I can do by now!")
+        #print(self.pseudo.get())
 
 if __name__ == "__main__":
-    app = interface_tk(None)
-    app.title('Mail saver')
-    app.mainloop()
+    #If the program is used by itself
+    import tkinter
+    f = interface_tk()
