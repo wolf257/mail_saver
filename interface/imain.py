@@ -3,6 +3,9 @@
 
 import tkinter
 
+import widgets
+import functions
+
 class interface_tk(object):
     def __init__(self):
         self.root = tkinter.Tk()
@@ -10,7 +13,10 @@ class interface_tk(object):
 
         self.initialize()
 
-        self.root.resizable(True, False)
+        #self.root.minsize(width=500, height=500)
+        #self.root.maxsize(width=1000, height=1000)
+
+        self.root.resizable(width=True, height=False)
         self.root.update()
         self.root.geometry(self.root.geometry())
 
@@ -26,54 +32,46 @@ class interface_tk(object):
         self.frame_connexion.grid()
 
         #------------------------------
-        # FIRST LINE (row 0)
+        # Presentation (row 0)
         #------------------------------
 
-        self.label_invit = tkinter.Label(self.frame_connexion, text="Veuillez entrer vos informations", \
-               anchor="center", font=('Courrier New', '18', 'bold underline'))
-        self.label_invit.grid(row=0, column=0,columnspan=4,sticky='EW')
+        widgets.create_label(self, self.frame_connexion, 0, 0, 4, \
+                    name='label_invit', text='Veuillez entrer vos informations', \
+                    font=('Courrier New', '18', 'bold underline'))
 
         #------------------------------
         # Email (row 1)
         #------------------------------
 
-        self.label_pseudo = tkinter.Label(self.frame_connexion, text="Adresse mail : ", anchor="center")
-        self.label_pseudo.grid(row=1, column=0,columnspan=2,sticky='EW')
+        widgets.create_label(self, self.frame_connexion, 1, 0, 2, \
+                    name='label_pseudo', text='Adresse mail :')
 
         self.pseudo = tkinter.StringVar()
         self.pseudo.set(u'example@exemple.com')
 
-        self.entry_pseudo = tkinter.Entry(self.frame_connexion, textvariable=self.pseudo)
-        self.entry_pseudo.grid(column=2,row=1,columnspan=2,sticky='EW')
-        #self.entry_pseudo.bind("<Return>", self.PressEnter)
-
-        self.entry_pseudo.focus_set()
-        self.entry_pseudo.selection_range(0, tkinter.END)
+        widgets.create_entry(self, self.frame_connexion, 1, 2, 2, \
+                    name='entry_pseudo', textvariable=self.pseudo)
 
         #------------------------------
         # Password (row 2)
         #------------------------------
 
-        self.label_pass = tkinter.Label(self.frame_connexion, text="Mot de passe : ", anchor="center")
-        self.label_pass.grid(row=2, column=0, columnspan=2, sticky='EW')
+        widgets.create_label(self, self.frame_connexion, 2, 0, 2, \
+                    name='label_pass', text='Mot de passe : ')
 
         self.password = tkinter.StringVar()
         self.password.set(u"password")
 
-        self.entry_password = tkinter.Entry(self.frame_connexion, textvariable=self.password, show='*')
-        self.entry_password.grid(column=2,row=2, columnspan=2, sticky='EW')
-        #self.entry_pseudo.bind("<Return>", self.PressEnter)
-
-        self.entry_password.focus_set()
-        self.entry_password.selection_range(0, tkinter.END)
+        widgets.create_entry(self, self.frame_connexion, 2, 2, 2, \
+                    name='entry_password', textvariable=self.password, show = '*')
 
         #------------------------------
         # BUTTON <Connexion> (row 3)
         #------------------------------
 
-        self.button_connexion = tkinter.Button(self.frame_connexion,text=u"Connexion", \
-            command=self.showmyId)
-        self.button_connexion.grid(row=3, column=3)
+        widgets.create_button(self, self.frame_connexion, 3, 3, \
+            name = 'button_connexion', text = 'Connexion', \
+            command = functions.showmyId(self))
 
         #==============> TEST
         self.myId = tkinter.StringVar()
@@ -88,15 +86,10 @@ class interface_tk(object):
         #------------------------------
 
         self.frame_connexion.grid_columnconfigure(0, weight=1)
-        self.frame_connexion.grid_rowconfigure(0, weight=1)
 
         #------------------------------
         # TEST (row 4)
         #------------------------------
-
-    def showmyId(self):
-        self.myId.set('Your email is : ' + self.pseudo.get() + "\nThat\'s the only thing I can do by now!")
-        #print(self.pseudo.get())
 
 if __name__ == "__main__":
     #If the program is used by itself
