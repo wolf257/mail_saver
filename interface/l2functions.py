@@ -4,15 +4,9 @@
 '''
 
 import tkinter
+import interface.l1diffpages
 
-def showmyId(self) : #, obj):
-    #obj.set('Your email is : ' + self.pseudo.get() + "\nThat\'s the only thing I can do by now!")
-    #print(self.pseudo.get())
-    pass
-
-
-''' Version qui marche
-def showmyId(self):
-        self.myId.set('Your email is : ' + self.pseudo.get() + "\nThat\'s the only thing I can do by now!")
-        #print(self.pseudo.get())
-'''
+def showmyId(self, vartoset, vartoget) :
+    #print("Kalanakha")
+    vartoset.set('Your email is : ' + vartoget.get() + "\nThat\'s the only thing I can do by now!")
+    #print(self.pseudo.get()

@@ -13,8 +13,7 @@ import mymodules.server_directories as myserver_directories
 import mymodules.local_messages as mylocal_messages
 import mymodules.server_messages as myserver_messages
 
-import interface.imain as interface
-
+import interface.l0mainpage as mainpage
 
 while 1 :
 
@@ -23,7 +22,7 @@ while 1 :
     #========================
 
     a = input("How do you want me to work ? " + \
-        "\n 1 - via Terminal" + \
+    "\n 1 - via Terminal" + \
         "\n 2 - via GUI" + \
         "\n (enter) - Exit" + \
         "\nYour choice : ")
@@ -55,8 +54,8 @@ while 1 :
     #==================================
     elif a.strip() == '2' :
         print("Go see the GUI. Talk to you later.")
-        interface.interface_tk()
-            # Note : program won't resume until you close the GUI
+        mainpage.MainWindow()
+            # Note : program resume without waiting until you close the GUI
 
     #==================================
     elif a.strip() == '' :

@@ -51,37 +51,43 @@ class PageTest(tkinter.Frame):
 
 class PageConnexion(tkinter.Frame):
 
-    def __init__(self, parent, controller):
-        tkinter.Frame.__init__(self, parent)
+    def __init__(self, parent, controller) : #,  width=400, height=300):
+        tkinter.Frame.__init__(self, parent) #, width=width, height=height)
+        #self.grid(sticky='we')
+        #self.grid_columnconfigure(0, weight=1)
+
+        #------------------------------
+        # Titre Page : Hors FC
+        #------------------------------
 
         self.controller = controller
         label = tkinter.Label(self, text="PageConnexion", font=controller.title_font)
-        label.grid()
+        label.grid()#sticky='ne')
 
         #label.pack(side="top", fill="x", pady=10)
-
         #------------------------------
-        # Frame
+        # Frame CENTRAL (FC)
         #------------------------------
 
-        parent = tkinter.Frame(self, bd='8', bg='yellow', \
+        parent = tkinter.Frame(self, bd='8', bg='green', \
             highlightthickness='10', highlightcolor='blue')
         parent.grid()
-        #parent.grid_columnconfigure(0, weight=4)
 
-        #------------------------------
-        # Presentation (row 0)
-        #------------------------------
+        #parent.grid_columnconfigure(0, weight=1)
 
-        widgets.create_label(self, parent, 0, 0, 4, \
+            #------------------------------
+            # FC : Presentation (row 0)
+            #------------------------------
+
+        widgets.create_label_text(self, parent, 0, 0, 4, \
                     name='label_invit', text='Veuillez entrer vos informations', \
                     font=('Courrier New', '18', 'bold underline'))
 
-        #------------------------------
-        # Email (row 1)
-        #------------------------------
+            #------------------------------
+            # FC : Email (row 1)
+            #------------------------------
 
-        widgets.create_label(self, parent, 1, 0, 2, \
+        widgets.create_label_text(self, parent, 1, 0, 2, \
                     name='label_pseudo', text='Adresse mail :')
 
         self.pseudo = tkinter.StringVar()
@@ -90,11 +96,11 @@ class PageConnexion(tkinter.Frame):
         widgets.create_entry(self, parent, 1, 2, 2, \
                     name='entry_pseudo', textvariable=self.pseudo)
 
-        #------------------------------
-        # Password (row 2)
-        #------------------------------
+            #------------------------------
+            # FC : Password (row 2)
+            #------------------------------
 
-        widgets.create_label(self, parent, 2, 0, 2, \
+        widgets.create_label_text(self, parent, 2, 0, 2, \
                     name='label_pass', text='Mot de passe : ')
 
         self.password = tkinter.StringVar()
@@ -103,30 +109,35 @@ class PageConnexion(tkinter.Frame):
         widgets.create_entry(self, parent, 2, 2, 2, \
                     name='entry_password', textvariable=self.password, show = '*')
 
-        #------------------------------
-        # BUTTON <Connexion> (row 3)
-        #------------------------------
+            #------------------------------
+            # FC : Label myId (row 3)
+            # 	BUTTON <Connexion> (row 4)
+            #------------------------------
 
-        widgets.create_button(self, parent, 3, 3, \
-            name = 'button_connexion', text = 'Connexion', \
-            command = functions.showmyId(self))
-
-        #==============> TEST
         self.myId = tkinter.StringVar()
-        self.label_show = tkinter.Label(parent, textvariable=self.myId, \
-               anchor="center",) #font=('Courrier New', '16', 'bold underline'))
-        self.label_show.grid(row=4, column=0,columnspan=4,sticky='EW')
-        self.myId.set('Click on Connexion to change me !')
-        #==============>
+        widgets.create_label_textvar(self, parent, 3, 0, 4, name='label_id', textvariable = self.myId)
+
+        self.myId.set('Click on connexion to Change me !' )
+
+        #label = tkinter.Label(self, textvariable= self.myId, anchor='n', bg='purple')
+        #label.grid(column=0, row=3, columnspan='2', sticky='EW')
+        #self.myId.set('Hello, it is me.' + self.pseudo.get() )
+
+        widgets.create_button(self, parent, 4, 3, \
+            command = lambda : functions.showmyId(self, self.myId, self.pseudo), \
+            #command = None, \
+            name = 'button_connexion', text = 'Connexion')
+
+            #command = lambda: self.myId.set('Hello, it is me.'))
+            #command = functions.showmyId0(self, self.myId))
+            #command = functions.showmyId1(self, self.myId))
+            #command = showmyId(self, myId, pseudo))
+
 
         #------------------------------
-        # RESIZING
+        # Button <Go to Start> : Hors FC
         #------------------------------
-
-        #parent.grid_columnconfigure(0, weight=4)
 
         button = tkinter.Button(self, text="Go to the start page", \
             command=lambda: controller.show_frame("StartPage"))
         button.grid()
-
-        #parent.grid_columnconfigure(0, weight=1)

@@ -20,21 +20,29 @@ class MainWindow(tkinter.Tk):
         self.title('Mail Saver')
         self.geometry("700x400") # set size of the main window to 300x300 pixels
 
+        self.grid_rowconfigure(0, weight=1)
+        self.grid_columnconfigure(0, weight=1)
+
         self.title_font = tkfont.Font(family='Helvetica', size=18, weight="bold", slant="italic")
 
         # the container is where we'll stack a bunch of frames
         # on top of each other, then the one we want visible
         # will be raised above the others
-        container = tkinter.Frame(self)
-        container.pack(side="top", fill="both", expand=True)
-        container.grid_rowconfigure(0, weight=1)
-        container.grid_columnconfigure(0, weight=1)
+        container = tkinter.Frame(self, bd='8', bg='red', width='500', height="300", \
+            highlightthickness='10', highlightcolor='yellow')
+        container.grid_propagate(0)
+        container.grid()
+
+        # Fulfill (if disable) (or not) the space between
+        # the container and the frame inside it
+        #container.grid_rowconfigure(0, weight=1)
+        #container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
 
         for F in (pages.StartPage, pages.PageTest, pages.PageConnexion):
             page_name = F.__name__
-            frame = F(parent=container, controller=self)
+            frame = F(parent=container, controller=self) #, width=200, height=200)
             self.frames[page_name] = frame
 
             # all of the pages in same location;
