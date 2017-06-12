@@ -21,7 +21,7 @@ def create_entry(self, parent, row, column, columnspan, name='a', textvariable='
     self.name.focus_set()
     self.name.selection_range(0, tkinter.END)
 
-def create_button(self, parent, row, column, command, name='a', text = 'b') :
+def create_button(self, parent, row, column, name='a', text = 'b', command=None) :
     self.name = tkinter.Button(parent, text = text, \
         command = command)
     self.name.grid(row=row, column=column)

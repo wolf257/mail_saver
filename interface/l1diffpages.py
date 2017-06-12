@@ -124,15 +124,8 @@ class PageConnexion(tkinter.Frame):
         #self.myId.set('Hello, it is me.' + self.pseudo.get() )
 
         widgets.create_button(self, parent, 4, 3, \
-            command = lambda : functions.showmyId(self, self.myId, self.pseudo), \
-            #command = None, \
-            name = 'button_connexion', text = 'Connexion')
-
-            #command = lambda: self.myId.set('Hello, it is me.'))
-            #command = functions.showmyId0(self, self.myId))
-            #command = functions.showmyId1(self, self.myId))
-            #command = showmyId(self, myId, pseudo))
-
+            name = 'button_connexion', text = 'Connexion', \
+            command = lambda : functions.showmyId(self, self.myId, self.pseudo))
 
         #------------------------------
         # Button <Go to Start> : Hors FC
