@@ -7,6 +7,8 @@ import tkinter
 import interface.l1diffpages
 
 def showmyId(self, vartoset, vartoget) :
-    #print("Kalanakha")
+    #print("...")
     vartoset.set('Your email is : ' + vartoget.get() + "\nThat\'s the only thing I can do by now!")
-    #print(self.pseudo.get()
+
+# to use it with l2functions as functions
+    # functions.showmyId(self, vartoset, vartoget)
