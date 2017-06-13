@@ -1,5 +1,5 @@
 '''
- L2WIDGETS for level 2.
+ l2widgets for level 2.
  Easier to visualize the tree view.
 '''
 

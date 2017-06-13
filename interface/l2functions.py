@@ -1,5 +1,5 @@
 '''
- L2FUNCTIONS for level 2.
+ l2functions for level 2.
  Easier to visualize the tree view.
 '''
 

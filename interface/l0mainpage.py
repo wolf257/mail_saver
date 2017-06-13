@@ -1,5 +1,5 @@
 '''
- L0INTERFACEMAINPAGE for level 0.
+ l0mainpage for level 0.
  Easier to visualize the tree view.
 '''
 

@@ -1,5 +1,5 @@
 '''
- L1DIFFPAGES for level 1.
+ l1diffpages for level 1.
  Easier to visualize the tree view.
 '''
 
