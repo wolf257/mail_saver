@@ -14,6 +14,12 @@ except :
     import interface.l2widgets as widgets
     import interface.l2functions as functions
 
+#====================================================================================
+# TODO : Modify Button StartPage to reinitialize
+    # create it as a Button with a function double (go_to_page AND reinitialize)
+    # don't forget to copy the function show_frame to l2functions
+#====================================================================================
+
 class StartPage(tkinter.Frame):
 
     def __init__(self, parent, controller):
@@ -64,7 +70,6 @@ class PageConnexion(tkinter.Frame):
         label = tkinter.Label(self, text="PageConnexion", font=controller.title_font)
         label.grid()#sticky='ne')
 
-        #label.pack(side="top", fill="x", pady=10)
         #------------------------------
         # Frame CENTRAL (FC)
         #------------------------------
@@ -72,8 +77,6 @@ class PageConnexion(tkinter.Frame):
         parent = tkinter.Frame(self, bd='8', bg='green', \
             highlightthickness='10', highlightcolor='blue')
         parent.grid()
-
-        #parent.grid_columnconfigure(0, weight=1)
 
             #------------------------------
             # FC : Presentation (row 0)
@@ -112,6 +115,7 @@ class PageConnexion(tkinter.Frame):
             #------------------------------
             # FC : Label myId (row 3)
             # 	BUTTON <Connexion> (row 4)
+            # 	BUTTON <Reinitialize> (row 5) (temporary)
             #------------------------------
 
         self.myId = tkinter.StringVar()
@@ -119,13 +123,13 @@ class PageConnexion(tkinter.Frame):
 
         self.myId.set('Click on connexion to Change me !' )
 
-        #label = tkinter.Label(self, textvariable= self.myId, anchor='n', bg='purple')
-        #label.grid(column=0, row=3, columnspan='2', sticky='EW')
-        #self.myId.set('Hello, it is me.' + self.pseudo.get() )
-
         widgets.create_button(self, parent, 4, 3, \
             name = 'button_connexion', text = 'Connexion', \
             command = lambda : functions.showmyId(self, self.myId, self.pseudo))
+
+        widgets.create_button(self, parent, 5, 3, \
+            name = 'button_reinit', text = 'Reinitialize', \
+            command = lambda : functions.reinitialize(self, self.myId, self.pseudo))
 
         #------------------------------
         # Button <Go to Start> : Hors FC

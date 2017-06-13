@@ -12,3 +12,17 @@ def showmyId(self, vartoset, vartoget) :
 
 # to use it with l2functions as functions
     # functions.showmyId(self, vartoset, vartoget)
+
+def reinitialize(self, vartoset, vartoget) :
+    #print("...")
+    vartoget.set("example@example.com")
+    vartoset.set("Reinitialization. \nMail cleared.")
+
+# to use it with l2functions as functions
+    # functions.reinitialize(self, vartoset, vartoget)
+
+#====================================================================================
+#TODO : For each function, add :
+    #Print with the operation AND the time of the click
+    #Will serve in the report
+#====================================================================================
