@@ -4,7 +4,7 @@
 '''
 
 import tkinter
-from tkinter import font  as tkfont
+from tkinter import font as tkfont
 
 #Depending on where you call mainpage, you need to import differently
 try :

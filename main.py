@@ -21,8 +21,8 @@ while 1 :
     # 1st choice
     #========================
 
-    a = input("How do you want me to work ? " + \
-    "\n 1 - via Terminal" + \
+    a = input("\nLevel 0 : How do you want me to work ? " + \
+        "\n 1 - via Terminal" + \
         "\n 2 - via GUI" + \
         "\n (enter) - Exit" + \
         "\nYour choice : ")
@@ -35,27 +35,33 @@ while 1 :
         #========================
         # 2nd choice
         #========================
+        while 1 :
+            
+            b = input("\n Level 1 : What do you want me to do ? " + \
+                "\n a - Basic process" + \
+                "\n b - Create directories"+ \
+                "\n (enter) - Go back to the precedent options"
+                "\nYour choice : ")
 
-        b = input("What do you want me to do ? " + \
-            "\n a - Basic process" + \
-            "\n b - Create directories"+
-            "\nYour choice : ")
 
-
-        if b.strip() == 'a' :
-            mails_main.basic_process(imapObj)
-        elif b.strip == 'b' :
-            mylocal_directories.create_directories(imapObj)
-        else :
-            print("I dont know what to do. (restart)")
+            if b.strip() == 'a' :
+                mails_main.basic_process(imapObj)
+            elif b.strip() == 'b' :
+                mylocal_directories.create_directories(imapObj)
+            elif b.strip() == '' :
+                break
+            else :
+                print("I dont know what to do. (restart level 0)")
 
         myconnections.disconnect(imapObj)
 
     #==================================
     elif a.strip() == '2' :
         print("Go see the GUI. Talk to you later.")
-        mainpage.MainWindow()
-            # Note : program resume without waiting until you close the GUI
+        c = mainpage.MainWindow()
+        c.mainloop()
+            # Note : program won't resume until you close the GUI
+            # mainloop will returns only if the window dies
 
     #==================================
     elif a.strip() == '' :
@@ -68,5 +74,5 @@ while 1 :
     #==================================
     else :
         print("\n-----------------------------------")
-        print("I dont know what to do. (I restart).")
+        print("I dont know what to do. (Restart level 0).")
         print("-----------------------------------")

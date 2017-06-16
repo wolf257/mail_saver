@@ -9,9 +9,11 @@ from tkinter import font
 #Depending on where you call mainpage, you need to import differently
 try :
     import l2widgets as widgets
-    import l2functions as functions
 except :
     import interface.l2widgets as widgets
+try :
+    import l2functions as functions
+except :
     import interface.l2functions as functions
 
 class StartPage(tkinter.Frame):
