@@ -6,6 +6,8 @@
 # MAIN PART
 #-------------------
 
+import time
+
 import mymodules.connections as myconnections
 import mymodules.mails as mymails
 import mymodules.local_directories as mylocal_directories
@@ -21,7 +23,7 @@ while 1 :
     # 1st choice
     #========================
 
-    a = input("How do you want me to work ? " + \
+    a = input("\nHow do you want me to work ? " + \
     "\n 1 - via Terminal" + \
         "\n 2 - via GUI" + \
         "\n (enter) - Exit" + \
@@ -36,7 +38,7 @@ while 1 :
         # 2nd choice
         #========================
 
-        b = input("What do you want me to do ? " + \
+        b = input("\nWhat do you want me to do ? " + \
             "\n a - Basic process" + \
             "\n b - Create directories"+
             "\nYour choice : ")
@@ -54,19 +56,23 @@ while 1 :
     #==================================
     elif a.strip() == '2' :
         print("Go see the GUI. Talk to you later.")
-        mainpage.MainWindow()
-            # Note : program resume without waiting until you close the GUI
+        c = mainpage.MainWindow()
+        c.mainloop() # Note : so the program won't resume without waiting until you close the GUI
+
+        print("****************************")
+        print("The GUI is closed.")
+        print("****************************\n\n")
 
     #==================================
     elif a.strip() == '' :
-        print("+++++++++++++++++++++++++++++")
+        print("\n+++++++++++++++++++++++++++++")
         print("Thank you ! Bye.")
-        print("+++++++++++++++++++++++++++++")
+        print("+++++++++++++++++++++++++++++\n")
 
         break
 
     #==================================
     else :
-        print("\n-----------------------------------")
-        print("I dont know what to do. (I restart).")
-        print("-----------------------------------")
+        print("\n-----------------------------------------")
+        print("I dont know what to do. (I will restart).")
+        print("-----------------------------------------\n")

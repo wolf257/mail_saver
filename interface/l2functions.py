@@ -4,7 +4,11 @@
 '''
 
 import tkinter
-import interface.l1diffpages
+
+try :
+    import interface.l1diffpages
+except:
+    import l1diffpages
 
 def showmyId(self, vartoset, vartoget) :
     #print("...")

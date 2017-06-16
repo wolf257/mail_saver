@@ -60,3 +60,4 @@ class MainWindow(tkinter.Tk):
 if __name__ == "__main__":
     app = MainWindow()
     app.mainloop()
+    print("signal fin")
