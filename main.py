@@ -58,6 +58,7 @@ while 1 :
         print("Go see the GUI. Talk to you later.")
         c = mainpage.MainWindow()
         c.mainloop() # Note : so the program won't resume without waiting until you close the GUI
+        #the mainloop returns when the window dies.
 
         print("****************************")
         print("The GUI is closed.")
