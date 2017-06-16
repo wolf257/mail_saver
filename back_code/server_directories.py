@@ -7,7 +7,7 @@ import pprint
 import os
 import time
 
-import mymodules.server_messages as myserver_messages
+import back_code.server_messages as myserver_messages
 
 #-----------------------------
 #	TESTED

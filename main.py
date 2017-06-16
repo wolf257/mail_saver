@@ -8,14 +8,17 @@
 
 import time
 
-import mymodules.connections as myconnections
-import mymodules.mails as mymails
-import mymodules.local_directories as mylocal_directories
-import mymodules.server_directories as myserver_directories
-import mymodules.local_messages as mylocal_messages
-import mymodules.server_messages as myserver_messages
+import back_code.connections as myconnections
+import back_code.cmain as mails_main
+import back_code.local_directories as mylocal_directories
+import back_code.server_directories as myserver_directories
+import back_code.local_messages as mylocal_messages
+import back_code.server_messages as myserver_messages
 
-import interface.l0mainpage as mainpage
+try:
+    import interface.l0mainpage as mainpage
+except:
+    import l0mainpage as mainpage
 
 while 1 :
 
@@ -23,8 +26,8 @@ while 1 :
     # 1st choice
     #========================
 
-    a = input("\nHow do you want me to work ? " + \
-    "\n 1 - via Terminal" + \
+    a = input("\nLevel 0 : How do you want me to work ? " + \
+        "\n 1 - via Terminal" + \
         "\n 2 - via GUI" + \
         "\n (enter) - Exit" + \
         "\nYour choice : ")
@@ -37,19 +40,23 @@ while 1 :
         #========================
         # 2nd choice
         #========================
+        while 1 :
 
-        b = input("\nWhat do you want me to do ? " + \
-            "\n a - Basic process" + \
-            "\n b - Create directories"+
-            "\nYour choice : ")
+            b = input("\n Level 1 : What do you want me to do ? " + \
+                "\n a - Basic process" + \
+                "\n b - Create directories"+ \
+                "\n (enter) - Go back to the precedent options"
+                "\nYour choice : ")
 
 
-        if b.strip() == 'a' :
-            mymails.basic_process(imapObj)
-        elif b.strip == 'b' :
-            mylocal_directories.create_directories(imapObj)
-        else :
-            print("I dont know what to do. (restart)")
+            if b.strip() == 'a' :
+                mails_main.basic_process(imapObj)
+            elif b.strip() == 'b' :
+                mylocal_directories.create_directories(imapObj)
+            elif b.strip() == '' :
+                break
+            else :
+                print("I dont know what to do. (restart level 0)")
 
         myconnections.disconnect(imapObj)
 
@@ -74,6 +81,6 @@ while 1 :
 
     #==================================
     else :
-        print("\n-----------------------------------------")
-        print("I dont know what to do. (I will restart).")
-        print("-----------------------------------------\n")
+        print("\n-----------------------------------")
+        print("I dont know what to do. (Restart level 0).")
+        print("-----------------------------------")
