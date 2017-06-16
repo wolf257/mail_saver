@@ -6,12 +6,12 @@
 # MAIN PART
 #-------------------
 
-import mymodules.connections as myconnections
-import mymodules.mails as mymails
-import mymodules.local_directories as mylocal_directories
-import mymodules.server_directories as myserver_directories
-import mymodules.local_messages as mylocal_messages
-import mymodules.server_messages as myserver_messages
+import back_code.connections as myconnections
+import back_code.cmain as mails_main
+import back_code.local_directories as mylocal_directories
+import back_code.server_directories as myserver_directories
+import back_code.local_messages as mylocal_messages
+import back_code.server_messages as myserver_messages
 
 import interface.l0mainpage as mainpage
 
@@ -43,7 +43,7 @@ while 1 :
 
 
         if b.strip() == 'a' :
-            mymails.basic_process(imapObj)
+            mails_main.basic_process(imapObj)
         elif b.strip == 'b' :
             mylocal_directories.create_directories(imapObj)
         else :
