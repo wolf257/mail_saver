@@ -3,7 +3,8 @@
 
 #================================
 # List functions :
-#
+#	get_all_uids(imapObj, folder), messages_get_topic(rawMessages, i, uid),
+#	messages_get_generals(rawMessages, i, uid), get_messages(imapObj, folder, myUIDs),
 #================================
 
 import imapclient
