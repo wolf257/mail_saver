@@ -1,11 +1,6 @@
 #!usr/bin/python3
 #-*- coding : utf8 -*-
 
-#================================
-# List functions :
-#	basic_process(imapObj),
-#================================
-
 import imapclient
 import pyzmail
 import pprint
@@ -18,11 +13,13 @@ import back_code.directories as directories
 
 import back_code.messages as messages
 
-#-----------------------------
-#	TESTED
-#-----------------------------
+#================================
+# List functions :
+#================================
 
-#TODO : Encapsuler en créant un objet
+#====================================================================================
+#TODO :
+#====================================================================================
 
 def basic_process(imapObj):
     """ Entre in each directory, get all his message """

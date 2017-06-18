@@ -16,6 +16,10 @@ import getpass
 IMAPServers = {'gmail' : 'imap.gmail.com', 'yahoo' : 'imap.mail.yahoo.com',
 'outlook' : 'imap-mail.outlook.com', 'hotmail' : 'imap-mail.outlook.com', }
 
+#====================================================================================
+#TODO :
+#====================================================================================
+
 
 #----------------------------------------------------
 def select_servers(identifiant) : #WORKS
@@ -63,7 +67,3 @@ def disconnect(imapObj): #WORKS
     print("-----------------------------------")
     print("Déconnection reussie !")
     print("-----------------------------------")
-
-#---------------------------------------
-#	Not TESTED yet / Not NEEDED anymore
-#---------------------------------------

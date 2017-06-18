@@ -1,10 +1,6 @@
 #!usr/bin/python3
 #-*- coding : utf8 -*-
 
-#================================
-# List functions :
-#================================
-
 import imapclient
 import pyzmail
 import pprint
@@ -13,9 +9,13 @@ import time
 
 import back_code.messages as messages
 
-#-----------------------------
-#	TESTED
-#-----------------------------
+#================================
+# List functions :
+#================================
+
+#====================================================================================
+#TODO :
+#====================================================================================
 
 def s_print_all_folders(imapObj): #WORKS_TO_KEEP
     """ Print folders in server No return. """
@@ -28,18 +28,11 @@ def s_get_all_folders(imapObj): #WORKS_TO_KEEP
 
     return myFolders
 
-#================================
-# List functions :
-#	l_create_directories(imapObj),
-#================================
+#====================================================================================
+#TODO :
+#====================================================================================
 
-import imapclient
-import pyzmail
-import pprint
-import os
-import time
-
-def l_create_directories(imapObj): #WORKS_TO_KEEP
+def l_create_directories(imapObj): #WORKS
     #Commentaire : Si le dossier existe déjà, il y error.
     #TODO : Trouver solutions
 

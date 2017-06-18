@@ -1,17 +1,15 @@
 #!usr/bin/python3
 #-*- coding : utf8 -*-
 
-#================================
-# List functions :
-#	s_get_all_uids(imapObj, folder), s_messages_get_topic(rawMessages, i, uid),
-#	s_messages_get_generals(rawMessages, i, uid), s_get_messages(imapObj, folder, myUIDs),
-#================================
-
 import imapclient
 import pyzmail
 import pprint
 import os
 import time
+
+#================================
+# List functions :
+#================================
 
 #====================================================================================
 #TODO :  17/06/18 : 1 - Verify in s_get_messages that i won't look in the file we don't want
@@ -20,7 +18,7 @@ import time
 
 #import back_code.messages as messages
 
-def s_get_all_uids(imapObj, folder): #WORKS_TO_KEEP
+def s_get_all_uids(imapObj, folder): #WORKS
     """ List all uids and return them as list """
     myUIDs = imapObj.search()
 
@@ -53,7 +51,7 @@ def s_messages_get_generals(rawMessages, i, uid):
     if destinataire != 0 :
         print("et il est destiné à : ", destinataire)
 
-def s_get_messages(imapObj, folder, myUIDs) : #WORKS_TO_KEEP
+def s_get_messages(imapObj, folder, myUIDs) : #WORKS
 
 
     print("-------------- ACQUISITION DES MESSAGES DU DOSSIER " , folder[2] , " --------------")
