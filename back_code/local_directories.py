@@ -16,7 +16,7 @@ def create_directories(imapObj): #WORKS_TO_KEEP
     #Commentaire : Si le dossier existe déjà, il y error.
     #TODO : Trouver solutions
 
-    """ CREATES ALL THE DIRECTORIES existing IN the SERVERS """
+    """ CREATES LOCALLY ALL THE DIRECTORIES existing IN the SERVERS """
 
     myFolders = imapObj.list_folders()
 
