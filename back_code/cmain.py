@@ -14,8 +14,7 @@ import time
 
 import back_code.connections as myconnections
 
-import back_code.local_directories as mylocal_directories
-import back_code.server_directories as myserver_directories
+import back_code.directories as directories
 
 import back_code.messages as messages
 
@@ -29,7 +28,7 @@ def basic_process(imapObj):
     """ Entre in each directory, get all his message """
 
     print("-------------- ACQUISITION DES UIDs --------------")
-    myFolders = myserver_directories.s_get_all_folders(imapObj)
+    myFolders = directories.s_get_all_folders(imapObj)
 
     for folder in myFolders : ## folder[2] sera un nom de dossier
         try :

@@ -10,9 +10,8 @@ import time
 
 import back_code.connections as myconnections
 import back_code.cmain as mails_main
-import back_code.local_directories as mylocal_directories
-import back_code.server_directories as myserver_directories
 
+import back_code.directories as directories
 import back_code.messages as messages
 
 try:
@@ -52,7 +51,7 @@ while 1 :
             if b.strip() == 'a' :
                 mails_main.basic_process(imapObj)
             elif b.strip() == 'b' :
-                mylocal_directories.l_create_directories(imapObj)
+                directories.l_create_directories(imapObj)
             elif b.strip() == '' :
                 break
             else :
