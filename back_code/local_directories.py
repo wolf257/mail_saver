@@ -1,6 +1,11 @@
 #!usr/bin/python3
 #-*- coding : utf8 -*-
 
+#================================
+# List functions :
+#	create_directories(imapObj),
+#================================
+
 import imapclient
 import pyzmail
 import pprint

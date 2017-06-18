@@ -1,6 +1,11 @@
 #!usr/bin/python3
 #-*- coding : utf8 -*-
 
+#================================
+# List functions :
+#	print_all_folders(imapObj), get_all_folders(imapObj)
+#================================
+
 import imapclient
 import pyzmail
 import pprint

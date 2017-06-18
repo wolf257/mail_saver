@@ -1,6 +1,11 @@
 #!usr/bin/python3
 #-*- coding : utf8 -*-
 
+#================================
+# List functions :
+#	select_servers(identifiant), connect(), disconnect()
+#================================
+
 import imapclient
 import pyzmail
 import pprint
