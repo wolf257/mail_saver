@@ -18,7 +18,7 @@ import time
 #		2 - rewrite fonction to either WRITE OR PRINT
 #====================================================================================
 
-import back_code.local_messages as mylocal_messages
+#import back_code.messages as messages
 
 def s_get_all_uids(imapObj, folder): #WORKS_TO_KEEP
     """ List all uids and return them as list """
@@ -70,7 +70,7 @@ def s_get_messages(imapObj, folder, myUIDs) : #WORKS_TO_KEEP
 
             #TEST :
             #s_messages_get_topic(rawMessages, i, uid)
-            mylocal_messages.l_write_message(rawMessages, i, uid)
+            l_write_message(rawMessages, i, uid)
 
             #message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
             # TEST :
@@ -84,10 +84,42 @@ def s_get_messages(imapObj, folder, myUIDs) : #WORKS_TO_KEEP
             #print("Test réussie")
             i += 1
 
-def s_traitement_messages(arg):
-    pass
+#====================================================================================
+#TODO : 17/06/18 : l_write_message writes them all in ONE file.
+#	Create One file BY message with appropriated naming.
+# + Why not ask the user if he wants it in one place or separated
+#====================================================================================
 
+def l_create_message_file() :
+     #create file with right name
+     pass
 
+def l_write_message(rawMessages, i, uid) :
+    #open file with right name
+    #write
 
-#class message(object):
-#    """docstring for message."""
+    message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
+
+    expediteur = message.get_address('from')
+    sujet = message.get_subject()
+    destinataire = message.get_addresses('to')
+
+    content = message.text_part.get_payload().decode(message.text_part.charset)
+
+    print("Enregistrement du mail : ", i , " de la boite. \n")
+
+    with open("essai_write.txt", 'at') as f:
+        try :
+            f.write("Il a pour sujet : " + sujet + "\n")
+        except :
+            print("Probleme de sujet")
+        try :
+            f.write("Il a pour expediteur : " + expediteur[1] + "\n")
+        except :
+            print("Probleme expediteur")
+        try :
+            f.write("===============================\n\n")
+        except :
+            print("PRobleme fin de message")
+
+    print("C'est bon pour lui. \n")

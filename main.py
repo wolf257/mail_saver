@@ -12,8 +12,8 @@ import back_code.connections as myconnections
 import back_code.cmain as mails_main
 import back_code.local_directories as mylocal_directories
 import back_code.server_directories as myserver_directories
-import back_code.local_messages as mylocal_messages
-import back_code.server_messages as myserver_messages
+
+import back_code.messages as messages
 
 try:
     import interface.l0mainpage as mainpage

@@ -17,8 +17,7 @@ import back_code.connections as myconnections
 import back_code.local_directories as mylocal_directories
 import back_code.server_directories as myserver_directories
 
-import back_code.local_messages as mylocal_messages
-import back_code.server_messages as myserver_messages
+import back_code.messages as messages
 
 #-----------------------------
 #	TESTED
@@ -38,9 +37,9 @@ def basic_process(imapObj):
         except :
             print("On a un probleme sur le dossier : ", folder[2], ".")
         else :
-            myUIDs = myserver_messages.s_get_all_uids(imapObj, folder)
+            myUIDs = messages.s_get_all_uids(imapObj, folder)
 
             if len(myUIDs) > 0 :
-                myserver_messages.s_get_messages(imapObj, folder, myUIDs)
+                messages.s_get_messages(imapObj, folder, myUIDs)
             else :
                 print("Le dossier est vide.")

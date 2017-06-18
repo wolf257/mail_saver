@@ -12,7 +12,7 @@ import pprint
 import os
 import time
 
-import back_code.server_messages as myserver_messages
+import back_code.messages as messages
 
 #-----------------------------
 #	TESTED
