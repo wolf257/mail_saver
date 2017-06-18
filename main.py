@@ -52,7 +52,7 @@ while 1 :
             if b.strip() == 'a' :
                 mails_main.basic_process(imapObj)
             elif b.strip() == 'b' :
-                mylocal_directories.create_directories(imapObj)
+                mylocal_directories.l_create_directories(imapObj)
             elif b.strip() == '' :
                 break
             else :

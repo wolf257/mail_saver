@@ -3,7 +3,7 @@
 
 #================================
 # List functions :
-#	write_message(rawMessages, i, uid)
+#	l_write_message(rawMessages, i, uid)
 #================================
 
 import imapclient
@@ -13,16 +13,16 @@ import os
 import time
 
 #====================================================================================
-#TODO : 17/06/18 : write_message writes them all in ONE file.
+#TODO : 17/06/18 : l_write_message writes them all in ONE file.
 #	Create One file BY message with appropriated naming.
 # + Why not ask the user if he wants it in one place or separated
 #====================================================================================
 
-def create_message_file() :
+def l_create_message_file() :
      #create file with right name
      pass
 
-def write_message(rawMessages, i, uid) :
+def l_write_message(rawMessages, i, uid) :
     #open file with right name
     #write
 

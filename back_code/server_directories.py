@@ -3,7 +3,7 @@
 
 #================================
 # List functions :
-#	print_all_folders(imapObj), get_all_folders(imapObj)
+#	s_print_all_folders(imapObj), s_get_all_folders(imapObj)
 #================================
 
 import imapclient
@@ -18,12 +18,12 @@ import back_code.server_messages as myserver_messages
 #	TESTED
 #-----------------------------
 
-def print_all_folders(imapObj): #WORKS_TO_KEEP
+def s_print_all_folders(imapObj): #WORKS_TO_KEEP
     """ Print folders in server No return. """
     myFolders = imapObj.list_folders()
     pprint.pprint(myFolders)
 
-def get_all_folders(imapObj): #WORKS_TO_KEEP
+def s_get_all_folders(imapObj): #WORKS_TO_KEEP
     """ List folders in server and return them as a list """
     myFolders = imapObj.list_folders()
 

@@ -3,7 +3,7 @@
 
 #================================
 # List functions :
-#	create_directories(imapObj),
+#	l_create_directories(imapObj),
 #================================
 
 import imapclient
@@ -12,7 +12,7 @@ import pprint
 import os
 import time
 
-def create_directories(imapObj): #WORKS_TO_KEEP
+def l_create_directories(imapObj): #WORKS_TO_KEEP
     #Commentaire : Si le dossier existe déjà, il y error.
     #TODO : Trouver solutions
 

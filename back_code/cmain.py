@@ -30,7 +30,7 @@ def basic_process(imapObj):
     """ Entre in each directory, get all his message """
 
     print("-------------- ACQUISITION DES UIDs --------------")
-    myFolders = myserver_directories.get_all_folders(imapObj)
+    myFolders = myserver_directories.s_get_all_folders(imapObj)
 
     for folder in myFolders : ## folder[2] sera un nom de dossier
         try :
@@ -38,9 +38,9 @@ def basic_process(imapObj):
         except :
             print("On a un probleme sur le dossier : ", folder[2], ".")
         else :
-            myUIDs = myserver_messages.get_all_uids(imapObj, folder)
+            myUIDs = myserver_messages.s_get_all_uids(imapObj, folder)
 
             if len(myUIDs) > 0 :
-                myserver_messages.get_messages(imapObj, folder, myUIDs)
+                myserver_messages.s_get_messages(imapObj, folder, myUIDs)
             else :
                 print("Le dossier est vide.")

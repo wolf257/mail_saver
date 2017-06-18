@@ -3,8 +3,8 @@
 
 #================================
 # List functions :
-#	get_all_uids(imapObj, folder), messages_get_topic(rawMessages, i, uid),
-#	messages_get_generals(rawMessages, i, uid), get_messages(imapObj, folder, myUIDs),
+#	s_get_all_uids(imapObj, folder), s_messages_get_topic(rawMessages, i, uid),
+#	s_messages_get_generals(rawMessages, i, uid), s_get_messages(imapObj, folder, myUIDs),
 #================================
 
 import imapclient
@@ -14,13 +14,13 @@ import os
 import time
 
 #====================================================================================
-#TODO :  17/06/18 : 1 - Verify in get_messages that i won't look in the file we don't want
+#TODO :  17/06/18 : 1 - Verify in s_get_messages that i won't look in the file we don't want
 #		2 - rewrite fonction to either WRITE OR PRINT
 #====================================================================================
 
 import back_code.local_messages as mylocal_messages
 
-def get_all_uids(imapObj, folder): #WORKS_TO_KEEP
+def s_get_all_uids(imapObj, folder): #WORKS_TO_KEEP
     """ List all uids and return them as list """
     myUIDs = imapObj.search()
 
@@ -28,7 +28,7 @@ def get_all_uids(imapObj, folder): #WORKS_TO_KEEP
 
     return myUIDs
 
-def messages_get_topic(rawMessages, i, uid):
+def s_messages_get_topic(rawMessages, i, uid):
     """ Test function : get and print topic of message """
 
     message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
@@ -39,7 +39,7 @@ def messages_get_topic(rawMessages, i, uid):
     print("Il a pour sujet : ", sujet)
     #print("Et contenu : ", content)
 
-def messages_get_generals(rawMessages, i, uid):
+def s_messages_get_generals(rawMessages, i, uid):
     """ Get and print generalities about the message (from, subject, to) """
 
     message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
@@ -53,7 +53,7 @@ def messages_get_generals(rawMessages, i, uid):
     if destinataire != 0 :
         print("et il est destiné à : ", destinataire)
 
-def get_messages(imapObj, folder, myUIDs) : #WORKS_TO_KEEP
+def s_get_messages(imapObj, folder, myUIDs) : #WORKS_TO_KEEP
 
 
     print("-------------- ACQUISITION DES MESSAGES DU DOSSIER " , folder[2] , " --------------")
@@ -69,8 +69,8 @@ def get_messages(imapObj, folder, myUIDs) : #WORKS_TO_KEEP
             #pprint.pprint(rawMessages[i])
 
             #TEST :
-            #messages_get_topic(rawMessages, i, uid)
-            mylocal_messages.write_message(rawMessages, i, uid)
+            #s_messages_get_topic(rawMessages, i, uid)
+            mylocal_messages.l_write_message(rawMessages, i, uid)
 
             #message = pyzmail.PyzMessage.factory(rawMessages[i][uid][b'BODY[]'])
             # TEST :
@@ -84,7 +84,7 @@ def get_messages(imapObj, folder, myUIDs) : #WORKS_TO_KEEP
             #print("Test réussie")
             i += 1
 
-def traitement_messages(arg):
+def s_traitement_messages(arg):
     pass
 
 
